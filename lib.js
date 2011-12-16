@@ -108,6 +108,32 @@ exports.createTable = function(name,data,callback)
 	});
 }
 
+exports.update=function(table,data,row,callback)
+{
+	var sql = "";
+
+	data.forEach(function (r){
+
+		var sets = "";
+		r.forEach(function(i){
+			if (sets.length >0) { sets+=","; }
+			sets += '\''+i[0]+'\' = \''+i[1]+'\'';
+		});
+
+		if (sql.length > 0) sql+=";";
+
+		sql += 'UPDATE ' + table + ' SET ' + sets + ' WHERE ROWID = \'' + row + '\'';
+
+	});
+
+	if (data.length > 1) sql+=";";
+
+	exports.query(sql,function (e){
+		callback(e);
+	});
+}
+
+
 exports.insertRow=function(table,data,callback)
 {
 	var sql = "";

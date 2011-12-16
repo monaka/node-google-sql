@@ -22,6 +22,11 @@
            "name": "David bamber",
            "email": "dbamber@gmail.com",
            "web": "http://bmbr.co" 
+       },
+       {
+           "name": "Masaki Muranaka",
+           "email": "monamour@monaka.org",
+           "web": "http://about.me/monamour555/"
        } 
    ],
    "bugs": {
