@@ -29,6 +29,11 @@ exports.query = function(sql,callback)
 	{
 		res.on('data', function (chunk) {
 			var data = [];
+
+			if (Buffer.isBuffer(chunk)) {
+				chunk = chunk.toString('utf-8');
+			}
+			
 			csv()
 				.from(chunk)
 				.transform(function(aData,index) {
